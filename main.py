@@ -44,7 +44,8 @@ class WeatherApp:
         soup = BeautifulSoup(response.text, "html.parser")
 
         # Extract weather data from response
-        temp_div = soup.find("div", class_="b-metar-table__temperature")
+        temp_td = soup.find("td", class_="b-metar-table__temperature")
+        temp_div = temp_td.find("div", class_="b-metar-table__temperature-value")
         temp = float(temp_div.find("span", class_="temp").text)
 
         wind_div = soup.find("div", class_="b-metar-table__wind-detail")
